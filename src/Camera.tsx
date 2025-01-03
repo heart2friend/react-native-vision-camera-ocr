@@ -21,11 +21,11 @@ export const Camera = forwardRef(function Camera(
   props: CameraTypes,
   ref: ForwardedRef<any>
 ) {
-  
+
   const { device, callback, options, mode, ...p } = props;
 
   let plugin: TranslatorPlugin['translate'] | TextRecognitionPlugin['scanText'];
-  
+
   if (mode === 'translate') {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const { translate } = useTranslate(options);
@@ -43,7 +43,7 @@ export const Camera = forwardRef(function Camera(
     },
     [options]
   );
-  
+
   const frameProcessor: ReadonlyFrameProcessor = useFrameProcessor(
     (frame: Frame) => {
       'worklet';
