@@ -110,5 +110,9 @@ dependencies {
   implementation 'com.google.android.gms:play-services-mlkit-text-recognition-devanagari:16.0.1'
   implementation 'com.google.android.gms:play-services-mlkit-text-recognition-japanese:16.0.1'
   implementation 'com.google.android.gms:play-services-mlkit-text-recognition-korean:16.0.1'
+  
+  // Lifecycle dependency
+  implementation "androidx.lifecycle:lifecycle-common:2.8.7"
+
 }
 

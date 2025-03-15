@@ -45,20 +45,20 @@ class VisionCameraTextRecognitionPlugin(proxy: VisionCameraProxy, options: Map<S
     override fun callback(frame: Frame, arguments: Map<String, Any>?): HashMap<String, Any>? {
         val data = WritableNativeMap()
         val mediaImage: Image = frame.image
-        val image =
-            InputImage.fromMediaImage(mediaImage, frame.imageProxy.imageInfo.rotationDegrees)
+        val image = InputImage.fromMediaImage(mediaImage, frame.imageProxy.imageInfo.rotationDegrees)
         val task: Task<Text> = recognizer.process(image)
-        try {
+    
+        return try {
             val text: Text = Tasks.await(task)
             if (text.text.isEmpty()) {
-                return WritableNativeMap().toHashMap()
+                return hashMapOf("resultText" to "")
             }
-            data.putString("resultText", text.text)
-            data.putArray("blocks", getBlocks(text.textBlocks))
-            return data.toHashMap()
+            data.putString("resultText", text.text ?: "")
+            data.putArray("blocks", getBlocks(text.textBlocks) ?: WritableNativeArray())
+            return data.toHashMap() as HashMap<String, Any>
         } catch (e: Exception) {
             e.printStackTrace()
-            return null
+            null
         }
     }
 
