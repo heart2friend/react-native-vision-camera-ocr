@@ -1,6 +1,6 @@
 {
   "name": "react-native-vision-camera-ocr",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "OCR",
   "source": "./src/index.tsx",
   "main": "./lib/commonjs/index.js",
